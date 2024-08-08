@@ -1,0 +1,6 @@
+venv/*
+venv
+.env
+refferals.db
+*__pycache__
+__pycache__

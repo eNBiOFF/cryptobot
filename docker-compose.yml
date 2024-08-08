@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  db:
+    image: keinos/sqlite3:latest
+    restart: on-failure
+    volumes:
+      - sqldata: /var/lib/sqldata/data
+    ports:
+      - "5432:5432"
+  bot:
+    build: .
+    command: sh -c "python -m bot.py"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    restart: always
